@@ -1,5 +1,5 @@
 //
-//  Task.swift
+//  TaskProtocol.swift
 //  GoodList
 //
 //  Created by Bianca Maciel on 28/01/26.
