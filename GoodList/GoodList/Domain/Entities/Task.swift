@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task: Identifiable {
+struct ToDoTask: Identifiable {
     let id: UUID
     let title: String
     let isCompleted: Bool
