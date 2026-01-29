@@ -13,7 +13,7 @@ struct AppFactory {
     static func makeToDoTaskListView() -> ToDoTaskListView {
 
         // 1. Repository
-        let repository = InMemoryToDoTaskRepository()
+        let repository: ToDoTaskRepository = UserDefaultsToDoTaskRepository()
 
         // 2. UseCases
         let fetchTasksUseCase = DefaultFetchToDoTasksUseCase(repository: repository)
