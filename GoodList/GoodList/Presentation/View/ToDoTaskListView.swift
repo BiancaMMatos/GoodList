@@ -10,13 +10,24 @@ import SwiftUI
 struct ToDoTaskListView: View {
     
     @StateObject var viewModel: ToDoTaskListViewModel
+    @StateObject var addViewModel: AddTaskViewModel
     
     var body: some View {
         NavigationStack {
-            List(viewModel.tasks) { task in
-                ToDoTaskRow(task: task)
+            List {
+                ForEach(viewModel.tasks) { task in
+                    ToDoTaskRow(task: task)
+                }
+                .onDelete(perform: viewModel.delete)
             }
             .navigationTitle("GoodList")
+            .toolbar {
+                NavigationLink {
+                    AddTaskView(viewModel: addViewModel)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
             .onAppear {
                 viewModel.loadTasks()
             }

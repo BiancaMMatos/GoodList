@@ -18,13 +18,14 @@ struct AppFactory {
         // 2. UseCases
         let fetchTasksUseCase = DefaultFetchToDoTasksUseCase(repository: repository)
         let createTaskUseCase = DefaultCreateToDoTaskUseCase(repository: repository)
+        let deleteTaskUseCase = DefaultDeleteToDoTaskUseCase(repository: repository)
 
         // 3. ViewModel
-        let viewModel = ToDoTaskListViewModel(fetchTasksUseCase: fetchTasksUseCase)
+        let viewModel = ToDoTaskListViewModel(fetchTasksUseCase: fetchTasksUseCase, deleteTaskUseCase: deleteTaskUseCase)
         let addVM = AddTaskViewModel(createTaskUseCase: createTaskUseCase)
 
         // 4. View
-        return ToDoTaskListView(viewModel: viewModel)
+        return ToDoTaskListView(viewModel: viewModel, addViewModel: addVM)
     }
 }
 
