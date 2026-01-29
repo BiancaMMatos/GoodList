@@ -14,3 +14,8 @@ protocol CreateToDoTaskUseCase {
 protocol FetchToDoTasksUseCase {
     func execute() -> [ToDoTask]
 }
+
+/// To encapsulate the rules and process for deleting an existing to-do task
+protocol DeleteToDoTaskUseCase {
+    func execute(task: ToDoTask)
+}
