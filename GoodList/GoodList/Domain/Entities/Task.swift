@@ -8,14 +8,14 @@
 import SwiftUI
 import Foundation
 
-struct ToDoTask: Identifiable {
+struct ToDoTask: Identifiable, Codable {
     let id: UUID
     let title: String
     let isCompleted: Bool
     let priority: TaskPriority
 }
 
-enum TaskPriority: Int, CaseIterable {
+enum TaskPriority: Int, CaseIterable, Codable {
     case low
     case medium
     case high
