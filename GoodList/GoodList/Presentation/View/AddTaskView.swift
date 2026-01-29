@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct AddTaskView: View {
+
     @ObservedObject var viewModel: AddTaskViewModel
+    @Environment(\.dismiss) private var dismiss
 
     @State private var title = ""
     @State private var priority: TaskPriority = .medium
@@ -24,7 +26,11 @@ struct AddTaskView: View {
             }
 
             Button("Add Task") {
-                viewModel.addTask(title: title, priority: priority)
+                viewModel.addTask(
+                    title: title,
+                    priority: priority
+                )
+                dismiss()
             }
         }
         .navigationTitle("New Task")
