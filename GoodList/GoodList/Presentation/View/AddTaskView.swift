@@ -24,14 +24,26 @@ struct AddTaskView: View {
                     Text($0.label)
                 }
             }
-
-            Button("Add Task") {
+            
+            Button {
                 viewModel.addTask(
                     title: title,
                     priority: priority
                 )
                 dismiss()
+            } label: {
+                Text("Add Task")
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
             }
+            .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            .opacity(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.5 : 1)
+
+            
         }
         .navigationTitle("New Task")
     }
