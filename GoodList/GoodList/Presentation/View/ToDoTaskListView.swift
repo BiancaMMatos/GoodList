@@ -8,17 +8,31 @@
 import SwiftUI
 
 struct ToDoTaskListView: View {
-    
-    @StateObject var viewModel: ToDoTaskListViewModel
-    @StateObject var addViewModel: AddTaskViewModel
-    
+
+    let addViewModel: AddTaskViewModel
+    @ObservedObject var viewModel: ToDoTaskListViewModel
+
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(viewModel.tasks) { task in
-                    ToDoTaskRow(task: task)
+            ZStack {
+
+                LinearGradient(
+                    colors: [
+                        Color.purple.opacity(0.6),
+                        Color(uiColor: .systemBackground)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+
+                List {
+                    ForEach(viewModel.tasks) { task in
+                        ToDoTaskRow(task: task)
+                    }
+                    .onDelete(perform: viewModel.delete)
                 }
-                .onDelete(perform: viewModel.delete)
+                .scrollContentBackground(.hidden)
             }
             .navigationTitle("GoodList")
             .toolbar {
