@@ -8,14 +8,15 @@
 import Combine
 
 final class ToDoTaskListViewModel: ObservableObject {
+
     @Published private(set) var tasks: [ToDoTask] = []
+
     private let fetchTasksUseCase: FetchToDoTasksUseCase
-    
-    init(tasks: [ToDoTask], fetchTasksUseCase: FetchToDoTasksUseCase) {
-        self.tasks = tasks
+
+    init(fetchTasksUseCase: FetchToDoTasksUseCase) {
         self.fetchTasksUseCase = fetchTasksUseCase
     }
-    
+
     func loadTasks() {
         tasks = fetchTasksUseCase.execute()
     }

@@ -14,7 +14,7 @@ struct ToDoTaskListView: View {
     var body: some View {
         NavigationStack {
             List(viewModel.tasks) { task in
-                
+                ToDoTaskRow(task: task)
             }
             .navigationTitle("GoodList")
             .onAppear {

@@ -11,7 +11,10 @@ import SwiftUI
 struct GoodListApp: App {
     var body: some Scene {
         WindowGroup {
-            ToDoTaskListView()
+            AppFactory.makeToDoTaskListView()
         }
     }
 }
+
+
+

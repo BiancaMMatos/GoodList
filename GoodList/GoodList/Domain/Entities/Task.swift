@@ -5,6 +5,7 @@
 //  Created by Bianca Maciel on 28/01/26.
 //
 
+import SwiftUI
 import Foundation
 
 struct ToDoTask: Identifiable {
@@ -18,4 +19,20 @@ enum TaskPriority: Int, CaseIterable {
     case low
     case medium
     case high
+    
+    var label: String {
+        switch self {
+        case .low: "Low"
+        case .medium: "Medium"
+        case .high: "High"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .low: .green
+        case .medium: .orange
+        case .high: .red
+        }
+    }
 }
