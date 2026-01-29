@@ -15,7 +15,7 @@ struct ToDoTask: Identifiable, Codable {
     let priority: TaskPriority
 }
 
-enum TaskPriority: Int, CaseIterable {
+enum TaskPriority: Int, CaseIterable, Codable {
     case low
     case medium
     case high
