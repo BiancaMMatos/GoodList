@@ -25,7 +25,7 @@ struct AppFactory {
         let addVM = AddTaskViewModel(createTaskUseCase: createTaskUseCase)
 
         // 4. View
-        return ToDoTaskListView(viewModel: viewModel, addViewModel: addVM)
+        return ToDoTaskListView(addViewModel: addVM, viewModel: viewModel)
     }
 }
 
